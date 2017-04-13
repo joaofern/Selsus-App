@@ -1,0 +1,141 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <include layout="@layout/titlebar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:elevation="15dp"
+                android:layout_weight="1.0">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="3"
+                        android:padding="4dp"
+                        android:textColor="@color/colorTitleText"
+                        android:textSize="18dp"
+                        android:fontFamily="sans-serif"
+                        android:typeface="normal" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dip"
+                        android:id="@+id/bar"
+                        android:layout_below="@+id/title"
+                        android:background="#AAAAAA" />
+
+                    <!-- we add graph view to display -->
+                    <ImageView
+                        android:id="@+id/picture"
+                        android:layout_width="240dp"
+                        android:layout_height="290dp"
+                        android:layout_below="@+id/bar"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/picture"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14dp"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="sans-serif" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dip"
+                        android:id="@+id/bar2"
+                        android:layout_below="@+id/time"
+                        android:background="#AAAAAA"
+                        android:layout_marginTop="10dp"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bar2"
+                        android:textSize="14dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorTitleText"
+                        android:fontFamily="sans-serif"
+                        android:text="Add comment"
+                        android:typeface="normal"
+                        android:textAllCaps="false"
+                        android:layout_centerHorizontal="true"
+                        />
+
+
+
+                    <EditText
+                        android:id="@+id/mytextText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:layout_below="@+id/comment"
+                        android:layout_marginTop="15dp"
+                        android:visibility="gone"
+                        />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <Button
+                android:id="@+id/next"
+                android:layout_height="42dp"
+                android:layout_width="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="27dp"
+                android:layout_centerInParent="true"
+                android:background="@color/colorAccent"
+                android:layout_below="@+id/card_view"
+                android:text="Send"
+                android:fontFamily="sans-serif"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:textAllCaps="false"/>
+
+
+        </RelativeLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>
+
