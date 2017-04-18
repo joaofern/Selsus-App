@@ -42,8 +42,9 @@ import android.os.Handler;
 public class GraphFragment extends Fragment {
     private int i = 0;
     private static final Random RANDOM = new Random();
-    private int lastX = 0;
     private final Handler mHandler = new Handler();
+    private boolean changed = false;
+    private double lux = 0;
     private DiagnosisActivity activity;
     private List<SensorEventListener> listeners;
     private Boolean onCapture = false;
@@ -139,9 +140,14 @@ public class GraphFragment extends Fragment {
                             toKeep = 10000 / minDelay; //10 seconds
 
                         ((LineGraphSeries<DataPoint>)series.get(0)).appendData(dpX, true, toKeep);
+
                         if(onCapture && selected.contains(sensor.getType())) {
                             List<DataPoint> captureXDataPoints = capture.get(sensor.getType()).get(0);
                             captureXDataPoints.add(dpX);
+                            if(event.sensor.getType()==Sensor.TYPE_LIGHT){
+                                lux = event.values[0];
+
+                            }
 
                         }
                         if(event.values.length>1&&event.sensor.getType()!=Sensor.TYPE_PROXIMITY&&event.sensor.getType()!=Sensor.TYPE_LIGHT) {
@@ -155,9 +161,13 @@ public class GraphFragment extends Fragment {
                             }
                         }
 
+
                     } catch (NullPointerException | IndexOutOfBoundsException e) {
                         //do nothing
                     }
+
+
+
                 }
 
                 @Override

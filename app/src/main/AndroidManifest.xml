@@ -6,19 +6,16 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DiagnosisToolActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".DiagnosisToolActivity" />
         <activity android:name=".DiagnosisActivity" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -30,7 +27,19 @@
 
         <activity android:name=".GraphResultsActivity" />
         <activity android:name=".CameraResultsActivity" />
-        <activity android:name=".VideoResultsActivity"></activity>
+        <activity android:name=".VideoResultsActivity" />
+        <activity android:name=".InitialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SelcompSelectActivity"
+            android:label="@string/title_activity_selcomp_select"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".QRReaderActivity"></activity>
     </application>
 
 </manifest>

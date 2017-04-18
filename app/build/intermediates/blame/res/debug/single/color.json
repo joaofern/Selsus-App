@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\6f8a9e14cdd8235f7a231db5189a2d2036e144d7\\output\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c92780c53d79cf20f69c2b0a684f938c461b35a8\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_secondary_text_holo_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\b23aa8b333a417c894bfe7756276f26fd3863456\\output\\res\\color\\wallet_secondary_text_holo_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\wallet_primary_text_holo_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\b23aa8b333a417c894bfe7756276f26fd3863456\\output\\res\\color\\wallet_primary_text_holo_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c92780c53d79cf20f69c2b0a684f938c461b35a8\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c92780c53d79cf20f69c2b0a684f938c461b35a8\\output\\res\\color\\common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+    }
+]
