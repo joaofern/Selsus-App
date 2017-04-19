@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="f775bbf79bb7ccf875dd7382246c32357b58e496">
+        sha1="23d86ad64bf12f97e0417899ce49968573a82527">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f74c80e5244fb2b485546c72d9346232e6c7c614\classes.dex" />
     </item>
     <item
@@ -54,6 +54,15 @@
         revision="25.0.2"
         sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_e687176a3d1dbbb4a3b8aaac8ba07229d919cf1e.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_071174bf51f620c664b6769e53ec64c55cdedff1\classes.dex" />
     </item>
     <item
         is-multidex="false"

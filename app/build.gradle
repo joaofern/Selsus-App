@@ -36,6 +36,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'me.dm7.barcodescanner:zxing:1.8.4'
     compile 'com.crystal:crystalrangeseekbar:1.0.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
     testCompile 'junit:junit:4.12'
 
 }
