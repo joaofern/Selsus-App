@@ -9,4 +9,5 @@
     <string name="title_activity_selcomp_select">SelcompSelectActivity</string>
     <string name="search_title">Search</string>
     <string name="search_hint">Selcomps...</string>
+    <string name="flask_adress">172.30.6.255:5000</string>
 </resources>

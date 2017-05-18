@@ -51,12 +51,14 @@ public class GraphFragment extends Fragment {
     Button stopCapture;
     ArrayList<Integer> selected = new ArrayList<>();
     HashMap<Integer, List <List<DataPoint>>> capture = new HashMap<>();
+    int mode;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         activity = (DiagnosisActivity) getActivity();
+        mode = activity.getMode();
         final ArrayList<Integer> myData = activity.getSel();
         View view =  inflater.inflate(R.layout.fragment_graph, null, false);
 
@@ -119,9 +121,6 @@ public class GraphFragment extends Fragment {
 
             final int index = i;
             final SensorEventListener listener = new SensorEventListener() {
-
-                
-
                 @Override
                 public void onSensorChanged(SensorEvent event) {
                     try {
@@ -146,9 +145,7 @@ public class GraphFragment extends Fragment {
                             captureXDataPoints.add(dpX);
                             if(event.sensor.getType()==Sensor.TYPE_LIGHT){
                                 lux = event.values[0];
-
                             }
-
                         }
                         if(event.values.length>1&&event.sensor.getType()!=Sensor.TYPE_PROXIMITY&&event.sensor.getType()!=Sensor.TYPE_LIGHT) {
                             ((LineGraphSeries<DataPoint>) series.get(1)).appendData(dpY, true, toKeep);
@@ -207,6 +204,7 @@ public class GraphFragment extends Fragment {
                 Intent next = new Intent(getContext(), GraphResultsActivity.class);
                 next.putExtra("capture", capture);
                 next.putExtra("selected", selected);
+                next.putExtra("mode", mode);
 
                 startActivity(next);
 

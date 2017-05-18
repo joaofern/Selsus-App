@@ -4,6 +4,10 @@
         "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_picture.png"
     },
     {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\search.png",
+        "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable-xxhdpi\\search.png"
+    },
+    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_video.png",
         "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_video.png"
     }

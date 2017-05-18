@@ -22,16 +22,14 @@ public class SelcompInfoActivity extends AppCompatActivity {
         TextView title = (TextView) mToolbar.findViewById(R.id.toolbar_title);
         title.setText("SelComp Info");
 
+        try {
+            JSONObject json = new JSONObject(getIntent().getStringExtra("selcomp"));
+            System.out.println(json.toString());
+            View child = getLayoutInflater().inflate(R.layout.sensor_check, null);
+            TextView txt = (TextView) child.findViewById(R.id.sensorName);
 
-
-        String response = getIntent().getStringExtra("selcomps");
-//        try {
-//            //JSONObject json = new JSONObject(response);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
-
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

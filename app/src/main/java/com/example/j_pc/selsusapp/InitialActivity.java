@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class InitialActivity extends AppCompatActivity {
 
     @Override
@@ -13,17 +16,31 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-        ImageView logo = (ImageView) findViewById(R.id.logo);
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(getApplicationContext(), SelcompSelectActivity.class);
-                startActivity(next);
-
+        new Timer().schedule(new TimerTask(){
+            public void run() {
+                InitialActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        startActivity(new Intent(InitialActivity.this, SelcompSelectActivity.class));
+                    }
+                });
             }
-        });
+        }, 2000);
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Timer().schedule(new TimerTask(){
+            public void run() {
+                InitialActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        startActivity(new Intent(InitialActivity.this, SelcompSelectActivity.class));
+                    }
+                });
+            }
+        }, 2000);
     }
 }

@@ -42,6 +42,10 @@ public class DiagnosisActivity extends AppCompatActivity {
     SensorManager mSensorManager;
     List<GraphView> mGraphs;
 
+
+
+    int mode;
+
     LineGraphSeries series = new LineGraphSeries();
     int lastX = 0;
     final Random RANDOM = new Random();
@@ -68,6 +72,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         Intent intent = this.getIntent();
+        mode = intent.getIntExtra("mode",1);
         if (intent != null) sel = intent.getExtras().getIntegerArrayList("selected");
         else System.out.println("FAIL!!!!");
 
@@ -153,5 +158,6 @@ public class DiagnosisActivity extends AppCompatActivity {
     public ArrayList<Integer> getSel(){
         return sel;
     }
+    public int getMode() { return mode; }
 
 }

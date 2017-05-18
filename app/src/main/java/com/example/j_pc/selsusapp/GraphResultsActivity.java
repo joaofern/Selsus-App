@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -34,9 +35,12 @@ import java.math.BigDecimal;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class GraphResultsActivity extends AppCompatActivity {
 
@@ -47,6 +51,8 @@ public class GraphResultsActivity extends AppCompatActivity {
     HashMap<Integer,CheckBox> checkBoxes = new HashMap<>();
     HashMap<Integer,TextView> commentTextViews = new HashMap<>();
     HashMap<Integer,EditText> commentInput = new HashMap<>();
+    String itemDateStr1;
+    String itemDateStr2;
 
     SensorManager mSensorManager;
     @Override
@@ -118,8 +124,8 @@ public class GraphResultsActivity extends AppCompatActivity {
                 Date itemdate1 = convertTimestamp(ts1);
                 Date itemdate2 = convertTimestamp(ts2);
 
-                String itemDateStr1 = new SimpleDateFormat("HH:mm:ss.SS").format(itemdate1);
-                String itemDateStr2 = new SimpleDateFormat("HH:mm:ss.SS").format(itemdate2);
+                itemDateStr1 = new SimpleDateFormat("HH:mm:ss.SS").format(itemdate1);
+                itemDateStr2 = new SimpleDateFormat("HH:mm:ss.SS").format(itemdate2);
 
                 lable1.setText(itemDateStr1);
                 lable2.setText(itemDateStr2);
@@ -161,14 +167,20 @@ public class GraphResultsActivity extends AppCompatActivity {
                         Double min = capture.get(type).get(0).get((int)(minValue.intValue()*percent)).getX();
                         Double max = capture.get(type).get(0).get((int)(maxValue.intValue()*percent)).getX();
 
-                        String itemDateStr1 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(min));
-                        String itemDateStr2 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(max));
+                        itemDateStr1 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(min));
+                        itemDateStr2 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(max));
 
                         tvMin.setText(itemDateStr1);
                         tvMax.setText(itemDateStr2);
                     }
                 });
                 linear.addView(child);
+
+                List<List<DataPoint>> lst = capture.get(type);
+                for(List<DataPoint> dp_list : lst){
+                    setTimeInterval(dp_list,itemDateStr1,itemDateStr2);
+                }
+
             }
             commentListener();
 
@@ -199,8 +211,6 @@ public class GraphResultsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
     }
 
@@ -210,6 +220,16 @@ public class GraphResultsActivity extends AppCompatActivity {
                 + ((long)(a*1000000d) - SystemClock.elapsedRealtimeNanos()) / 1000000L;
         Date itemdate = new Date(timeInMillis);
         return itemdate;
+    }
+
+    public List<DataPoint> setTimeInterval(List<DataPoint> capture,String startdate, String enddate){
+        List<DataPoint> store  = new ArrayList<>();
+
+        for(DataPoint dp : capture){
+            System.out.println(dp.getX());
+        }
+
+        return store;
     }
 
 

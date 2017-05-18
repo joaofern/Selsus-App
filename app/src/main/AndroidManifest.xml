@@ -41,13 +41,18 @@
         <activity
             android:name=".SelcompSelectActivity"
             android:label="@string/title_activity_selcomp_select"
-            android:theme="@style/AppTheme"
-            >
-            <meta-data android:name="android.app.searchable"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".QRReaderActivity" />
-        <activity android:name=".SelcompInfoActivity"></activity>
+        <activity android:name=".SelcompInfoActivity" />
+        <activity android:name=".ModeSelectActivity" />
+        <activity android:name=".SystemOverviewActivity" />
+        <activity android:name=".AvailableSensorsActivity" />
+        <activity android:name=".CloudRequestGraphActivity" />
+        <activity android:name=".CloudGraphResultsActivity"></activity>
     </application>
 
 </manifest>

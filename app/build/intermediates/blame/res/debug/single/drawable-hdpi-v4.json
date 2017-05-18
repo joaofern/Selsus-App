@@ -4,16 +4,16 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_forward_30_white_36.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_forward_30_white_36.png"
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\cast_ic_stop_circle_filled_grey600.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\cast_ic_stop_circle_filled_grey600.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_close_dark.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-hdpi-v4\\ic_close_dark.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\cast_ic_stop_circle_filled_grey600.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\cast_ic_stop_circle_filled_grey600.png"
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_forward_30_white_36.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_forward_30_white_36.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_cast_off_light.png",
@@ -24,20 +24,20 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_replay_30_grey600_36.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_replay_30_grey600_36.png"
-    },
-    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_cast_dark.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-hdpi-v4\\ic_cast_dark.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_plusone_standard_off_client.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\893eb4176996986c19eddd919552aaee69869d2a\\output\\res\\drawable-hdpi-v4\\ic_plusone_standard_off_client.png"
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_replay_30_grey600_36.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_replay_30_grey600_36.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_plusone_standard_off_client.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\893eb4176996986c19eddd919552aaee69869d2a\\output\\res\\drawable-hdpi-v4\\ic_plusone_standard_off_client.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_replay_white_24.png",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\6f8a9e14cdd8235f7a231db5189a2d2036e144d7\\output\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_cast_white_36.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_cast_white_36.png"
-    },
-    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\quantum_ic_cast_white_36.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-hdpi-v4\\quantum_ic_cast_white_36.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
@@ -98,6 +98,10 @@
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c92780c53d79cf20f69c2b0a684f938c461b35a8\\output\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\selection_divider.9.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\81fba404dc3a6650ae8a11b7c796db18523cc254\\output\\res\\drawable-hdpi-v4\\selection_divider.9.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\cast_abc_scrubber_control_to_pressed_mtrl_000.png",

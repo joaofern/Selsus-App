@@ -6,5 +6,9 @@
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_video.png",
         "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable-mdpi\\ic_video.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\search.png",
+        "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable-mdpi\\search.png"
     }
 ]

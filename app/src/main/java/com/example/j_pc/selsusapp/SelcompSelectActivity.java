@@ -5,6 +5,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +17,17 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -44,11 +52,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class SelcompSelectActivity extends AppCompatActivity {
     JSONObject json_data = new JSONObject();
-    HashMap<Integer,JSONObject> selcomps = new HashMap<>();
-    ArrayList<CheckBox> checkboxes = new ArrayList<>();
+    JSONObject selcomps;
+    List<String> listItems = new ArrayList<>();
+    ArrayAdapter<String> mAdapter;
+    FloatingActionButton qrcode;
+    FloatingActionButton nfc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,24 +71,16 @@ public class SelcompSelectActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
 
         TextView title = (TextView) mToolbar.findViewById(R.id.toolbar_title);
-        title.setText("SelComp List");
-
-//        ImageView search_icon = (ImageView) mToolbar.findViewById(R.id.toolbar_video);
-//        search_icon.setImageResource(R.drawable.search);
-//        search_icon.setVisibility(View.VISIBLE);
-//        search_icon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        title.setText("SelSus App");
 
         final TextView mTextView;
         mTextView = (TextView) findViewById(R.id.text);
-        final LinearLayout linear = (LinearLayout) findViewById(R.id.linear);
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final String url = "http://10.0.2.2:5000/systec_panel/service/getSelcompsCloud.php";
+        String ip = getString(R.string.flask_adress);
+        final String url = "http://"+ip+"/systec_panel/service/getSelcompsCloud.php";
+        System.out.println(url);
+        //"http://192.168.1.75:5000/systec_panel/service/getSelcompsCloud.php";
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, (String)null,
                 new Response.Listener<JSONObject>()
@@ -84,33 +89,15 @@ public class SelcompSelectActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             json_data = response;
-                            JSONObject selcomps = response.getJSONObject("selcomps");
+                            selcomps = response.getJSONObject("selcomps");
                             Iterator<?> keys = selcomps.keys();
-                            int minHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
-
                             while( keys.hasNext() ) {
                                 String key = (String)keys.next();
                                 if ( selcomps.get(key) instanceof JSONObject ) {
-                                    final JSONObject sel = (JSONObject) selcomps.get(key);
-                                    View child = getLayoutInflater().inflate(R.layout.sensor_check, null);
-                                    child.setMinimumHeight(minHeight);
-                                    TextView txt = (TextView) child.findViewById(R.id.sensorName);
-                                    CheckBox chck = (CheckBox) child.findViewById(R.id.sensorCheckbox);
-                                    txt.setId(sel.getInt("selcompID"));
-                                    txt.setText(key);
-                                    chck.setVisibility(View.GONE);
-                                    SelcompSelectActivity.this.selcomps.put(sel.getInt("selcompID"),sel);
-                                    child.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent next = new Intent(getApplicationContext(), SelcompInfoActivity.class);
-                                            next.putExtra("selcomp",sel.toString());
-                                            startActivity(next);
-                                        }
-                                    });
-                                    linear.addView(child);
+                                    SelcompSelectActivity.this.listItems.add(key);
                                 }
                             }
+                            mAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -120,10 +107,29 @@ public class SelcompSelectActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        mTextView.setText(error.toString());
+                        System.out.println(error.toString());
                     }
                 }
         );
+
+        mAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listItems);
+        ListView listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String key = ((TextView) view).getText().toString();
+
+                Intent next = new Intent(getApplicationContext(), ModeSelectActivity.class);
+                try {
+                    next.putExtra("key",key);
+                    next.putExtra("selcomp",selcomps.getJSONObject(key).toString());
+                    startActivity(next);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 //        int socketTimeout = 10000;//30 seconds - change to what you want
 //        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
@@ -133,14 +139,15 @@ public class SelcompSelectActivity extends AppCompatActivity {
         // add it to the RequestQueue
         queue.add(getRequest);
 
-        final FloatingActionButton qrcode = (FloatingActionButton) findViewById(R.id.button1);
-        final FloatingActionButton nfc = (FloatingActionButton) findViewById(R.id.button2);
+        qrcode = (FloatingActionButton) findViewById(R.id.button1);
+        nfc = (FloatingActionButton) findViewById(R.id.button2);
 
 
         qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent next = new Intent(getApplicationContext(), QRReaderActivity.class);
+                next.putExtra("selcomps",selcomps.toString());
                 startActivity(next);
 
             }
@@ -152,6 +159,8 @@ public class SelcompSelectActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search, menu);
 
+
+
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -160,14 +169,17 @@ public class SelcompSelectActivity extends AppCompatActivity {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                mAdapter.getFilter().filter(query);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                mAdapter.getFilter().filter(newText);
+                return true;
             }
         });
 

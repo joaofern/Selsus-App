@@ -1,0 +1,181 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/test"
+                        android:weightSum="2">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="sans-serif"
+                            android:text="Select capture interval:"
+                            android:textColor="@color/colorTitleText"
+                            android:textSize="16dp"
+                            android:paddingBottom="13dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/linear2"
+                            android:orientation="vertical"/>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="0.5dip"
+                            android:background="#AAAAAA" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/test"
+                        android:layout_marginTop="40px">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="From"
+                            android:textColor="@color/colorTitleText"
+                            android:id="@+id/from"
+                            android:textAlignment="center"
+                            android:visibility="gone"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/from1"
+                            android:visibility="gone"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="17dp"
+                                android:textAlignment="center"
+                                android:text="From:"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="15dp"
+                                android:id="@+id/from_hour"
+                                android:textAlignment="center"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="15dp"
+                                android:id="@+id/from_date"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/to1"
+                            android:visibility="gone"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="17dp"
+                                android:textAlignment="center"
+                                android:text="To:"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textSize="15dp"
+                                android:id="@+id/to_hour"
+                                android:text="asdasd"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textSize="15dp"
+                                android:id="@+id/to_date"
+                                android:text="asdasd"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/colorTitleText"
+                            android:text="To"
+                            android:id="@+id/to"
+                            android:textAlignment="center"
+                            android:visibility="gone"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                </LinearLayout>
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="150dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="25px"
+                android:layout_marginBottom="50px"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

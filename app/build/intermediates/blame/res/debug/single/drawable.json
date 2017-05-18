@@ -268,6 +268,10 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable\\mr_ic_pause_light.xml"
     },
     {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\search.png",
+        "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\drawable\\search.png"
+    },
+    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_play.xml",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable\\cast_ic_notification_play.xml"
     },

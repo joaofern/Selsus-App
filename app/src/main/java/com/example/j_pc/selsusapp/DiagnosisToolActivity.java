@@ -26,10 +26,15 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -37,10 +42,13 @@ public class DiagnosisToolActivity extends AppCompatActivity {
 
     Toolbar mToolbar;
     ArraySet<Integer> sensorTypes = new ArraySet<>();
+    ArraySet<Integer> filtered = new ArraySet<>();
     private SensorManager mSensorManager;
     private Button button;
     ArrayList<Integer> selected = new ArrayList<>();
     HashMap<Integer,CheckBox> checkboxes = new HashMap<>();
+    private Intent intent;
+    int mode;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -93,6 +101,8 @@ public class DiagnosisToolActivity extends AppCompatActivity {
             }
         });
 
+        intent = getIntent();
+
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
         LinearLayout linear = (LinearLayout) findViewById(R.id.linear);
@@ -105,7 +115,41 @@ public class DiagnosisToolActivity extends AppCompatActivity {
 
         }
 
+
+        //Check sensors in recipe
+
+        String selcomps_string = intent.getStringExtra("selcomps");
+        mode = intent.getIntExtra("mode",1);
+
+        try {
+            JSONObject selcomps = new JSONObject(selcomps_string);
+
+            JSONObject recipes = selcomps.getJSONObject("recipes");
+
+            Iterator<?> keys = recipes.keys();
+            while( keys.hasNext() ) {
+                String key = (String)keys.next();
+                if ( recipes.get(key) instanceof JSONObject ) {
+                    JSONObject recipe_variables = recipes.getJSONObject(key).getJSONObject("variables");
+                    JSONArray test = recipe_variables.names();
+                    String first_var = (String)test.get(0);
+                    String accelerometer = "Accelerometer";
+
+                    //Check if sensor is in sensor recipes
+                    if(first_var.toLowerCase().contains(accelerometer.toLowerCase())){
+                        filtered.add(1);
+                    }
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(mode==2) sensorTypes = filtered;
+
         for (int type : sensorTypes) {
+
             View child = getLayoutInflater().inflate(R.layout.sensor_check, null);
             TextView txt = (TextView) child.findViewById(R.id.sensorName);
             txt.setText(sensorName(type));
@@ -126,6 +170,7 @@ public class DiagnosisToolActivity extends AppCompatActivity {
                         selected.add(type);
                 }
                 next.putExtra("selected", selected);
+                next.putExtra("mode",mode);
                 startActivity(next);
             }
         });

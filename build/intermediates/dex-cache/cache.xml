@@ -11,22 +11,22 @@
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_eb0834217e1ea36f5b6437c20b8b4f031c45931d.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="C:\Users\J-PC\.android\build-cache\81fba404dc3a6650ae8a11b7c796db18523cc254\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ac6fd54c55b470e89ca5a8fc97424f7130de3175">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_fd4298219ea56a565e7247af94ce9e76d3df1983.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="E:\eskto\SelSusApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="331482d8cf88a60a321eec60a4bcdbc44a16140b">
+        sha1="75559175c0958be6f690cc494c136592b62657c0">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f74c80e5244fb2b485546c72d9346232e6c7c614\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\J-PC\.android\build-cache\f50c917714f39acf516a9a00e78b9388d1b0358f\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9c2fe56c6e791ae364358a2edbf40eb197970585\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -38,13 +38,13 @@
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_9c2fe56c6e791ae364358a2edbf40eb197970585.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.1\2287494d4f5f9f3a9a2bb6980e3f32053721b315\core-3.2.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\core-3.2.1_b5047587ba20aa69437ceccafcd8ba888d6f2a81\classes.dex" />
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\library-1.0.19_071174bf51f620c664b6769e53ec64c55cdedff1.jar" />
     </item>
     <item
         is-multidex="false"
@@ -56,15 +56,6 @@
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_e687176a3d1dbbb4a3b8aaac8ba07229d919cf1e.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_071174bf51f620c664b6769e53ec64c55cdedff1\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="C:\Users\J-PC\.android\build-cache\a0f681f0fd7ad3bd9bc333ed63cae7a7905711e8\output\jars\classes.jar"
         jumboMode="false"
@@ -72,15 +63,6 @@
         revision="25.0.2"
         sha1="68ef1daf85c69fca8fddf7bbb947fc51cc9f8ca3">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_d483eaa4d1b20395daaf062262bdf576953cd9c0.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\J-PC\.android\build-cache\a0f681f0fd7ad3bd9bc333ed63cae7a7905711e8\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="68ef1daf85c69fca8fddf7bbb947fc51cc9f8ca3">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d483eaa4d1b20395daaf062262bdf576953cd9c0\classes.dex" />
     </item>
     <item
         is-multidex="false"

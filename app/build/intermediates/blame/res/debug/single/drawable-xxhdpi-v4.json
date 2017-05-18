@@ -4,12 +4,12 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_19_dark.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\quantum_ic_skip_next_grey600_36.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-xxhdpi-v4\\quantum_ic_skip_next_grey600_36.png"
-    },
-    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_connecting_02_light.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_02_light.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\quantum_ic_skip_next_grey600_36.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-xxhdpi-v4\\quantum_ic_skip_next_grey600_36.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_cast_dark.png",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_on_22_light.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\cast_ic_notification_1.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\fdb425484767a1c065a92b50d491260664748183\\output\\res\\drawable-xxhdpi-v4\\cast_ic_notification_1.png"
+    },
+    {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_on_12_light.png",
@@ -268,16 +268,16 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\dfeed5f48f1259e1335ef1243430f94097f82793\\output\\res\\drawable-xxhdpi-v4\\quantum_ic_stop_grey600_36.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_connecting_00_light.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_00_light.png"
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_connecting_17_light.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_17_light.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png",
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c92780c53d79cf20f69c2b0a684f938c461b35a8\\output\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
-        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_connecting_17_light.png",
-        "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_17_light.png"
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_connecting_00_light.png",
+        "source": "C:\\Users\\J-PC\\.android\\build-cache\\992ac23b457480513ebccdedc61fa0624d9987a8\\output\\res\\drawable-xxhdpi-v4\\ic_media_route_connecting_00_light.png"
     },
     {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_media_route_on_11_light.png",
