@@ -147,6 +147,7 @@ public class GraphFragment extends Fragment {
                                 lux = event.values[0];
                             }
                         }
+
                         if(event.values.length>1&&event.sensor.getType()!=Sensor.TYPE_PROXIMITY&&event.sensor.getType()!=Sensor.TYPE_LIGHT) {
                             ((LineGraphSeries<DataPoint>) series.get(1)).appendData(dpY, true, toKeep);
                             ((LineGraphSeries<DataPoint>) series.get(2)).appendData(dpZ, true, toKeep);
