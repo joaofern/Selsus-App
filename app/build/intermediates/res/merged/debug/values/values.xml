@@ -1095,7 +1095,7 @@
     <string name="debug_menu_troubleshooting">Troubleshooting</string>
     <string name="decline">Decline</string>
     <string name="diagnosis_titlebar">Diagnosis Tool</string>
-    <string name="flask_adress">172.30.6.255:5000</string>
+    <string name="flask_adress">192.168.0.101:80</string>
     <string name="mr_button_content_description">Cast button</string>
     <string name="mr_chooser_searching">Finding devices</string>
     <string name="mr_chooser_title">Cast to</string>

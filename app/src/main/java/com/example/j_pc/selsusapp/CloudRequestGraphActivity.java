@@ -58,6 +58,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
     HashMap<Integer, List <List<DataPoint>>> capture = new HashMap<>();
     HashMap<Integer, String> comments = new HashMap<>();
     String from1,to1, sensor_name;
+    int sel_id;
     List<CheckBox> checks = new ArrayList<CheckBox>();
 
 
@@ -78,7 +79,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
         LinearLayout linear2 = (LinearLayout) findViewById(R.id.linear2);
         Intent intent = getIntent();
         sensor_name = intent.getStringExtra("sel_name");
-        System.out.println(sensor_name);
+        sel_id = intent.getIntExtra("sel_id",0);
 
         View last5minutes = getLayoutInflater().inflate(R.layout.sensor_check, null);
         View lasthour = getLayoutInflater().inflate(R.layout.sensor_check, null);
@@ -217,7 +218,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
                     {
                         // Do something with the date. This Date object contains
                         // the date and time that the user has selected.
-                        from1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'")
+                        from1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                                 .format(date);
                         String hour = new SimpleDateFormat("HH:mm:ss")
                                 .format(date);
@@ -248,7 +249,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
                     {
                         // Do something with the date. This Date object contains
                         // the date and time that the user has selected.
-                        to1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'")
+                        to1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                                 .format(date);
                         String hour = new SimpleDateFormat("HH:mm:ss")
                                 .format(date);
@@ -277,7 +278,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
                     {
                         // Do something with the date. This Date object contains
                         // the date and time that the user has selected.
-                        from1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'")
+                        from1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                                 .format(date);
                         String hour = new SimpleDateFormat("HH:mm:ss:")
                                 .format(date);
@@ -306,7 +307,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
                     {
                         // Do something with the date. This Date object contains
                         // the date and time that the user has selected.
-                        to1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'")
+                        to1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                                 .format(date);
                         String hour = new SimpleDateFormat("HH:mm:ss")
                                 .format(date);
@@ -333,6 +334,7 @@ public class CloudRequestGraphActivity extends AppCompatActivity {
                 next_btn.putExtra("selected",sel);
                 next_btn.putExtra("sensor_name",sensor_name);
                 next_btn.putExtra("from",from1);
+                next_btn.putExtra("sel_id", sel_id);
                 next_btn.putExtra("to",to1);
                 startActivity(next_btn);
             }

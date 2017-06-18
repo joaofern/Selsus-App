@@ -159,12 +159,9 @@ public class GraphFragment extends Fragment {
                             }
                         }
 
-
                     } catch (NullPointerException | IndexOutOfBoundsException e) {
                         //do nothing
                     }
-
-
 
                 }
 

@@ -12,6 +12,12 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -72,6 +78,7 @@
         <activity android:name="com.example.j_pc.selsusapp.AvailableSensorsActivity" />
         <activity android:name="com.example.j_pc.selsusapp.CloudRequestGraphActivity" />
         <activity android:name="com.example.j_pc.selsusapp.CloudGraphResultsActivity" />
+        <activity android:name="com.example.j_pc.selsusapp.NFCReaderActivity" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

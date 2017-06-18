@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.android.gms.vision.text.Text;
@@ -30,9 +39,29 @@ import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,6 +70,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class GraphResultsActivity extends AppCompatActivity {
 
@@ -53,6 +93,7 @@ public class GraphResultsActivity extends AppCompatActivity {
     HashMap<Integer,EditText> commentInput = new HashMap<>();
     String itemDateStr1;
     String itemDateStr2;
+    Double min,max;
 
     SensorManager mSensorManager;
     @Override
@@ -68,6 +109,8 @@ public class GraphResultsActivity extends AppCompatActivity {
         title.setText("Capture Results");
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        final Button next = (Button) findViewById(R.id.next);
 
         Intent intent = this.getIntent();
         if (intent != null) {
@@ -93,6 +136,8 @@ public class GraphResultsActivity extends AppCompatActivity {
 
                 final TextView lable1 = (TextView)child.findViewById(R.id.lable1);
                 final TextView lable2 = (TextView)child.findViewById(R.id.lable2);
+
+
 
                 sensorName.setText(DiagnosisToolActivity.sensorName(type));
 
@@ -158,18 +203,16 @@ public class GraphResultsActivity extends AppCompatActivity {
                 final TextView tvMin = (TextView) child.findViewById(R.id.lable1);
                 final TextView tvMax = (TextView) child.findViewById(R.id.lable2);
 
+
                 // set listener
                 rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
                     @Override
                     public void valueChanged(Number minValue, Number maxValue) {
                         float percent = ((capture.get(type).get(0).size()-1)/100f);
-
-                        Double min = capture.get(type).get(0).get((int)(minValue.intValue()*percent)).getX();
-                        Double max = capture.get(type).get(0).get((int)(maxValue.intValue()*percent)).getX();
-
+                        min = capture.get(type).get(0).get((int)(minValue.intValue()*percent)).getX();
+                        max = capture.get(type).get(0).get((int)(maxValue.intValue()*percent)).getX();
                         itemDateStr1 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(min));
                         itemDateStr2 = new SimpleDateFormat("HH:mm:ss.SS").format(convertTimestamp(max));
-
                         tvMin.setText(itemDateStr1);
                         tvMax.setText(itemDateStr2);
                     }
@@ -177,21 +220,217 @@ public class GraphResultsActivity extends AppCompatActivity {
                 linear.addView(child);
 
                 List<List<DataPoint>> lst = capture.get(type);
-                for(List<DataPoint> dp_list : lst){
-                    setTimeInterval(dp_list,itemDateStr1,itemDateStr2);
+                List<List<DataPoint>> lst_store = new ArrayList<>();
+                //por cada axis
+                for(int i=0;i<lst.size();i++){
+                    List<DataPoint> dps = new ArrayList<>();
+                    try {
+                        dps = setTimeInterval(lst.get(i),min,max);
+                        lst_store.add(dps);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
-
+                toStore.put(type,lst_store);
+            }
+            try {
+                sendDataSelcomp(toStore.get(1));
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             commentListener();
-
         }
-
         else System.out.println("FAIL!!!!");
     }
 
 
-    public void commentListener() {
+    public void sendDataSelcomp(List<List<DataPoint>> capture) throws ParserConfigurationException, TransformerException, IOException {
+        ArrayList<String> str = new ArrayList<>();
+        for (int i = 0; i < capture.size(); i++) {
+            String var = "{";
+            String time = "{";
+            for (int j = 0; j < capture.get(i).size(); j++) {
+                var = var + capture.get(i).get(j).getY();
+                time = time + capture.get(i).get(j).getX();
+                if (j != capture.get(i).size() - 1) {
+                    var += ", ";
+                    time += ", ";
+                }
+            }
+            var = var + "}";
+            time = time + "}";
+            str.add(var);
+            str.add(time);
+        }
 
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+        // root elements
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElement("recipeadjustment");
+
+        // set attribute to staff element
+        Attr attr = doc.createAttribute("name");
+        attr.setValue("ProcessAdjustment");
+        rootElement.setAttributeNode(attr);
+        doc.appendChild(rootElement);
+
+        // servicetype elements
+        Element ele_servicetype = doc.createElement("servicetype");
+        ele_servicetype.appendChild(doc.createTextNode("OBSERVATION"));
+        rootElement.appendChild(ele_servicetype);
+
+        //device_id
+        Element ele_deviceid = doc.createElement("deviceid");
+        ele_deviceid.appendChild(doc.createTextNode("13452"));
+        rootElement.appendChild(ele_deviceid);
+
+        //variables
+        Element variables = doc.createElement("variables");
+        rootElement.appendChild(variables);
+
+        //variable1
+        Element variable1 = doc.createElement("variable");
+        variable1.appendChild(doc.createTextNode(str.get(0)));
+        Attr attr1 = doc.createAttribute("name");
+        attr1.setValue("Accelerometer1");
+        variable1.setAttributeNode(attr1);
+        variables.appendChild(variable1);
+
+        //variable2
+        Element variable2 = doc.createElement("variable");
+        variable2.appendChild(doc.createTextNode(str.get(2)));
+        Attr attr2 = doc.createAttribute("name");
+        attr2.setValue("Accelerometer2");
+        variable2.setAttributeNode(attr2);
+        variables.appendChild(variable2);
+
+        //variable2
+        Element variable3 = doc.createElement("variable");
+        variable3.appendChild(doc.createTextNode(str.get(4)));
+        Attr attr3 = doc.createAttribute("name");
+        attr3.setValue("Accelerometer3");
+        variable3.setAttributeNode(attr3);
+        variables.appendChild(variable3);
+
+        //timestamp
+        Element times = doc.createElement("variable");
+        times.appendChild(doc.createTextNode(str.get(1)));
+        Attr attr4 = doc.createAttribute("name");
+        attr4.setValue("timestamp");
+        times.setAttributeNode(attr4);
+        variables.appendChild(times);
+
+        // write the content into xml string
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StringWriter writer = new StringWriter();
+        StreamResult result = new StreamResult(writer);
+        transformer.transform(source, result);
+
+        String selcomp_ip = "192.168.0.101:57681";
+
+        final String body = writer.toString();
+        String ip = getString(R.string.flask_adress);
+        final String url = "http://" + selcomp_ip + "/WebServiceTest.asmx?WSDL/parseRecipe";
+
+        // Create the request queue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Create the request object
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener() {
+
+                    @Override
+                    public void onResponse(Object response) {
+                        System.out.println("RESPONSE: " + response.toString());
+                    }
+
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO handle the error
+                    }
+
+                }
+        ) {
+
+            @Override
+            public String getBodyContentType() {
+                return "text/xml; charset=" +
+                        getParamsEncoding();
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                String postData = body;
+                try {
+                    return postData == null ? null :
+                            postData.getBytes(getParamsEncoding());
+                } catch (UnsupportedEncodingException uee) {
+                    // TODO consider if some other action should be taken
+                    return null;
+                }
+            }
+
+        };
+
+        // Schedule the request on the queue
+        queue.add(stringRequest);
+    }
+
+
+
+    /*private class sendXML extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            HttpURLConnection conn = null;
+            URL obj = null;
+            String body = null;
+            try {
+                obj = new URL(params[0]);
+                conn = (HttpURLConnection) obj.openConnection();
+                conn.setReadTimeout(10000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+                body = params[1];
+                OutputStream output = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(output, "UTF-8"));
+                writer.write(body);
+                writer.flush();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                conn.disconnect();
+            }
+            System.out.println(body);
+            return body;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }*/
+
+    public void commentListener() {
             for(final Integer type : sel){
                 commentTextViews.get(type).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -222,11 +461,19 @@ public class GraphResultsActivity extends AppCompatActivity {
         return itemdate;
     }
 
-    public List<DataPoint> setTimeInterval(List<DataPoint> capture,String startdate, String enddate){
+    public List<DataPoint> setTimeInterval(List<DataPoint> capture,Double startdate, Double enddate) throws ParseException {
         List<DataPoint> store  = new ArrayList<>();
 
         for(DataPoint dp : capture){
-            System.out.println(dp.getX());
+            Date date = convertTimestamp(dp.getX());
+
+            Date start = convertTimestamp(min);
+            Date end = convertTimestamp(max);
+
+            if(date.after(start) & date.before(end)){
+                DataPoint new_dp = new DataPoint(dp.getX(),dp.getY());
+                store.add(new_dp);
+            }
         }
 
         return store;

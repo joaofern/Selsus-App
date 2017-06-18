@@ -20,12 +20,21 @@
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_fd4298219ea56a565e7247af94ce9e76d3df1983.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="C:\Users\J-PC\.android\build-cache\cc8abeff209d9055751d4e016853edca9d0512bc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a558f54ad003ffe728034d78a474709a77337cc2">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_1d43541015c3a835564aecf451bfbb15ba819ca7.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="E:\eskto\SelSusApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="75559175c0958be6f690cc494c136592b62657c0">
+        sha1="d7a662fb1e35ab7594859ffee9af8ff94e1df198">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f74c80e5244fb2b485546c72d9346232e6c7c614\classes.dex" />
     </item>
     <item
@@ -36,6 +45,15 @@
         revision="25.0.2"
         sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_9c2fe56c6e791ae364358a2edbf40eb197970585.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\eskto\SelSusApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5d36e3e6864841398da11a15b8561dd516afc6af\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -81,24 +99,6 @@
         revision="25.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_086dc715ca07076bea8493c22e1fe508054da539.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\J-PC\.android\build-cache\cc8abeff209d9055751d4e016853edca9d0512bc\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a558f54ad003ffe728034d78a474709a77337cc2">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\classes_1d43541015c3a835564aecf451bfbb15ba819ca7.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="E:\eskto\SelSusApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5d36e3e6864841398da11a15b8561dd516afc6af\classes.dex" />
     </item>
 
 </items>

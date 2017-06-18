@@ -39,6 +39,7 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
     private ArrayList<Integer> selected = new ArrayList<>();
     private ArrayList<String> sensor_names = new ArrayList<>();
     private String from,to, sensor_name;
+    private int sel_id;
     private JSONObject json_data = new JSONObject();
     View child;
 
@@ -59,6 +60,7 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
         sensor_names = intent.getStringArrayListExtra("sensor_names");
         from = intent.getStringExtra("from");
         to = intent.getStringExtra("to");
+        sel_id = intent.getIntExtra("sel_id",0);
         sensor_name = intent.getStringExtra("sensor_name");
 
         //Percorrer sensorID - 1 request por grafico
@@ -66,9 +68,20 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(getBaseContext());
         String ip = getString(R.string.flask_adress);
+        String final_url;
         final String url = "http://"+ip+"/systec_panel/service/getDataCloud.php";
-        System.out.println(url);
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, (String)null,
+//        System.out.println(url);
+//
+//        System.out.println("From: " +from);
+//        System.out.println("To: " +to);
+//        System.out.println("sel_id: " + sel_id);
+//
+//        System.out.println("sensor name: " + sensor_name);
+//
+        final_url = url + "?deviceID=" + sel_id + "&init_date="+from + "&final_date="+to;
+
+        System.out.println(final_url);
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, final_url, (String)null,
                 new Response.Listener<JSONObject>()
                 {
                     @Override
@@ -95,10 +108,13 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
                         int trick = 1;
                         String initial_date = "";
                         String final_date = "";
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss.SSS");
-
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+                        int aux = 0;
                         while( keys.hasNext() ) {
+
                             String key = (String)keys.next();
+
+
 
                             try {
                                 date = format.parse(key.toString());
@@ -107,22 +123,23 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
                                 }
                                 final_date = key.toString();
                                 try {
-                                    String[] arr = response.get(key).toString().split("");
+                                    String resp = response.get(key).toString();
+                                    String auxi = resp.substring(1, resp.length()-1);
 
                                     //1 line
-                                    if(arr.length==6){
-                                        String str = arr[2] + arr[3] + arr[4];
-                                        Double dbl = Double.parseDouble(str);
+                                    if(auxi.length()<9){
+                                        System.out.println(key);
+                                        aux++;
+                                        Double dbl = Double.parseDouble(auxi);
                                         DataPoint dp = new DataPoint(date,dbl);
-
                                         series.appendData(dp,true,100000);
                                     }
                                     //2 lines
-                                    else if(arr.length==9){
+                                    else if(auxi.length()==9){
 
                                     }
                                     //3 lines
-                                    else if(arr.length==12){
+                                    else if(auxi.length()==12){
 
                                     }
                                 } catch (JSONException e) {

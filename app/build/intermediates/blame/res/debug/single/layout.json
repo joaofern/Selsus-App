@@ -280,6 +280,10 @@
         "source": "C:\\Users\\J-PC\\.android\\build-cache\\c16c43423c0c41fe74f550d0c606f62f2980b4d5\\output\\res\\layout\\abc_screen_simple.xml"
     },
     {
+        "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_nfcreader.xml",
+        "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\layout\\activity_nfcreader.xml"
+    },
+    {
         "merged": "E:\\eskto\\SelSusApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\graph_card.xml",
         "source": "E:\\eskto\\SelSusApp\\app\\src\\main\\res\\layout\\graph_card.xml"
     },

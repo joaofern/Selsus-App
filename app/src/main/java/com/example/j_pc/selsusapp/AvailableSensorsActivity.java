@@ -46,6 +46,8 @@ public class AvailableSensorsActivity extends AppCompatActivity {
     ArrayList<Integer> selected = new ArrayList<>();
 //    ArrayList<String> sel_names = new ArrayList<>();
     String sel_name;
+    int sel_id;
+
     HashMap<Integer,String> sensor_names = new HashMap<>();
 
     @Override
@@ -90,6 +92,9 @@ public class AvailableSensorsActivity extends AppCompatActivity {
                     if (((CheckBox) findViewById(id)).isChecked()){
                         selected.add(id);
                         sel_name = sensor_names.get(id);
+                        sel_id = id;
+
+
                     }
 
                 }
@@ -98,6 +103,8 @@ public class AvailableSensorsActivity extends AppCompatActivity {
                 next.putExtra("mode",intent.getStringExtra("mode"));
                 System.out.println(sel_name);
                 next.putExtra("sel_name",sel_name);
+                System.out.println("sel_id"+sel_id);
+                next.putExtra("sel_id",sel_id);
                 startActivity(next);
             }
         });

@@ -79,7 +79,6 @@ public class SelcompSelectActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String ip = getString(R.string.flask_adress);
         final String url = "http://"+ip+"/systec_panel/service/getSelcompsCloud.php";
-        System.out.println(url);
         //"http://192.168.1.75:5000/systec_panel/service/getSelcompsCloud.php";
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, (String)null,
@@ -147,6 +146,16 @@ public class SelcompSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent next = new Intent(getApplicationContext(), QRReaderActivity.class);
+                next.putExtra("selcomps",selcomps.toString());
+                startActivity(next);
+
+            }
+        });
+
+        nfc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent next = new Intent(getApplicationContext(), NFCReaderActivity.class);
                 next.putExtra("selcomps",selcomps.toString());
                 startActivity(next);
 

@@ -2,37 +2,34 @@
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="COLD"
+    build-mode="HOT_WARM"
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1495072170627"
+    timestamp="1497627999569"
     token="4619803386859437585"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="416" />
+        duration="317" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="13" />
     <task
         name="instant-run-transform"
-        duration="41" />
+        duration="22" />
     <task
         name="verifier"
-        duration="14" />
+        duration="2" />
 
     <artifact
-        location="E:\eskto\SelSusApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="E:\eskto\SelSusApp\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="E:\eskto\SelSusApp\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
     <build
         build-mode="FULL"
-        timestamp="1495070215310"
+        timestamp="1497622137556"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="E:\eskto\SelSusApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -73,15 +70,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1495071057023"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="E:\eskto\SelSusApp\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1495072170627"
+        timestamp="1497627906306"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="E:\eskto\SelSusApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -89,6 +78,14 @@
         <artifact
             location="E:\eskto\SelSusApp\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1497627999569"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\eskto\SelSusApp\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

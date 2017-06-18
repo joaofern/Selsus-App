@@ -6,6 +6,12 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -52,7 +58,8 @@
         <activity android:name=".SystemOverviewActivity" />
         <activity android:name=".AvailableSensorsActivity" />
         <activity android:name=".CloudRequestGraphActivity" />
-        <activity android:name=".CloudGraphResultsActivity"></activity>
+        <activity android:name=".CloudGraphResultsActivity" />
+        <activity android:name=".NFCReaderActivity"></activity>
     </application>
 
 </manifest>
