@@ -25,6 +25,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.jjoe64.graphview.series.DataPoint;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +49,8 @@ public class DiagnosisToolActivity extends AppCompatActivity {
     ArrayList<Integer> selected = new ArrayList<>();
     HashMap<Integer,CheckBox> checkboxes = new HashMap<>();
     private Intent intent;
+
+
     int mode;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -273,4 +276,6 @@ public class DiagnosisToolActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
+
 }

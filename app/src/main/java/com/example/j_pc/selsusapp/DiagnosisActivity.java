@@ -41,8 +41,7 @@ public class DiagnosisActivity extends AppCompatActivity {
     ArrayList<Integer> sel = new ArrayList<>();
     SensorManager mSensorManager;
     List<GraphView> mGraphs;
-
-
+    HashMap<Integer, List<List<DataPoint>>> capture;
 
     int mode;
 
@@ -98,6 +97,12 @@ public class DiagnosisActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 
     @Override
     public void onStart() {

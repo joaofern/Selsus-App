@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -115,8 +117,7 @@ public class GraphResultsActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if (intent != null) {
             sel = intent.getExtras().getIntegerArrayList("selected");
-            capture = (HashMap<Integer, List <List<DataPoint>>>) intent.getSerializableExtra("capture");
-
+            capture = GraphFragment.capture;
             for(final Integer type : sel){
                 View child = this.getLayoutInflater().inflate(R.layout.graph_card2, null);
                 CardView card = (CardView)child.findViewById(R.id.card_view);
@@ -150,9 +151,11 @@ public class GraphResultsActivity extends AppCompatActivity {
                 });
 
                 //Add DataPoints
-
+                System.out.println("to keep2: " + capture.get(type).get(0).size());
                 Integer toKeep = capture.get(type).get(0).size();
+                int a = 0;
                 for(DataPoint dp : capture.get(type).get(0)){
+                    a++;
                     series.appendData(dp,true,toKeep);
                 }
                 for(DataPoint dp : capture.get(type).get(1)){
@@ -161,6 +164,8 @@ public class GraphResultsActivity extends AppCompatActivity {
                 for(DataPoint dp : capture.get(type).get(2)){
                     series2.appendData(dp,true,toKeep);
                 }
+                System.out.println("A: " + a);
+
                 int tam = capture.get(type).get(0).size();
 
                 Double ts1 = (capture.get(type).get(0).get(0).getX());
@@ -341,6 +346,29 @@ public class GraphResultsActivity extends AppCompatActivity {
         final String body = writer.toString();
         String ip = getString(R.string.flask_adress);
         final String url = "http://" + selcomp_ip + "/WebServiceTest.asmx?WSDL/parseRecipe";
+        String sFileName= "C:\\Users\\J-PC\\Desktop\\test";
+
+        try
+        {
+            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            File gpxfile = new File(root, sFileName);
+            FileWriter writer1 = new FileWriter(gpxfile);
+            writer1.append(writer.toString());
+            writer1.flush();
+            writer1.close();
+            Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        System.out.println(writer.toString());
+
+
 
         // Create the request queue
         RequestQueue queue = Volley.newRequestQueue(this);
