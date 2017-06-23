@@ -121,12 +121,14 @@ public class ModeSelectActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent next;
+                //diagnosis
                 if(chck1.isChecked()) {
                     next = new Intent(getApplicationContext(), DiagnosisToolActivity.class);
                     next.putExtra("mode", 1);
                     next.putExtra("selcomps",selcomps);
                     startActivity(next);
                 }
+                //calibration
                 else if(chck2.isChecked()){
                     next = new Intent(getApplicationContext(), DiagnosisToolActivity.class);
                     next.putExtra("mode", 2);
@@ -134,23 +136,16 @@ public class ModeSelectActivity extends AppCompatActivity {
                     startActivity(next);
 
                 }
+                //selcomp
                 else if(chck3.isChecked()){
-//                    next = new Intent(getApplicationContext(), AvailableSensorsActivity.class);
-//                    next.putExtra("mode", 3);
-//                    next.putExtra("selcomp",selcomps);
-//                    startActivity(next);
-                    AlertDialog alertDialog = new AlertDialog.Builder(ModeSelectActivity.this).create();
-                    alertDialog.setTitle("Warning");
-                    alertDialog.setMessage("Not available yet!!");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+                    next = new Intent(getApplicationContext(), AvailableSensorsActivity.class);
+                    next.putExtra("mode", 3);
+                    next.putExtra("selcomp",selcomps);
+                    startActivity(next);
+
 
                 }
+                //cloud
                 else if(chck4.isChecked()){
                     next = new Intent(getApplicationContext(), AvailableSensorsActivity.class);
                     next.putExtra("mode", 4);

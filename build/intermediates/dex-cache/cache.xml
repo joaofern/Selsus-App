@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.android.service\1.1.1\6c3c5ef8f5f205def0f725b6c0f57217c8fb9ff5\org.eclipse.paho.android.service-1.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6c3c5ef8f5f205def0f725b6c0f57217c8fb9ff5">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.android.service-1.1.1_7cb4c6fc8794fe127028d84d899e34fc9ea9f537.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\J-PC\.android\build-cache\81fba404dc3a6650ae8a11b7c796db18523cc254\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -25,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="68b66d82ff79b8d76d06a97437e79b07f6efa735">
+        sha1="bc6a00f081aa097bcafdf6c65c99000031a7ce91">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f74c80e5244fb2b485546c72d9346232e6c7c614\classes.dex" />
     </item>
     <item
@@ -99,6 +108,15 @@
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="E:\eskto\SelSusApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5d36e3e6864841398da11a15b8561dd516afc6af\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\J-PC\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.client.mqttv3\1.1.0\89d827ffa47c241f2627421ef1d6c7a8c207a341\org.eclipse.paho.client.mqttv3-1.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="89d827ffa47c241f2627421ef1d6c7a8c207a341">
+        <dex dex="E:\eskto\SelSusApp\app\build\intermediates\pre-dexed\debug\org.eclipse.paho.client.mqttv3-1.1.0_baa06dc53a305f297880fbb467111e2a52d61fb0.jar" />
     </item>
 
 </items>

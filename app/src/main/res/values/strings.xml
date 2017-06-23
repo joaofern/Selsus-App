@@ -11,5 +11,5 @@
     <string name="search_hint">Selcomps...</string>
 
     <!--192.168.0.101:80-->
-    <string name="flask_adress">172.30.20.143:5000</string>
+    <string name="flask_adress">192.168.0.101:80</string>
 </resources>

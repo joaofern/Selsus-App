@@ -36,7 +36,6 @@ package com.example.j_pc.selsusapp;
 public class DiagnosisActivity extends AppCompatActivity {
 
     Toolbar mToolbar;
-    TabLayout tabLayout;
     ViewPager viewPager;
     ArrayList<Integer> sel = new ArrayList<>();
     SensorManager mSensorManager;
@@ -45,16 +44,9 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     int mode;
 
-    LineGraphSeries series = new LineGraphSeries();
     int lastX = 0;
     final Random RANDOM = new Random();
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,15 +68,10 @@ public class DiagnosisActivity extends AppCompatActivity {
         else System.out.println("FAIL!!!!");
 
         mGraphs = new ArrayList<>(sel.size());
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
                 .setName("Diagnosis Page")

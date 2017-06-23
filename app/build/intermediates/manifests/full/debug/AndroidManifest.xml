@@ -19,7 +19,6 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -44,8 +43,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.j_pc.selsusapp.DiagnosisToolActivity" />
-        <activity android:name="com.example.j_pc.selsusapp.DiagnosisActivity" />
+        <service android:name="org.eclipse.paho.android.service.MqttService" >
+        </service>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -80,6 +79,9 @@
         <activity android:name="com.example.j_pc.selsusapp.CloudRequestGraphActivity" />
         <activity android:name="com.example.j_pc.selsusapp.CloudGraphResultsActivity" />
         <activity android:name="com.example.j_pc.selsusapp.NFCReaderActivity" />
+        <activity android:name="com.example.j_pc.selsusapp.MQTTClientActivity" />
+        <activity android:name="com.example.j_pc.selsusapp.DiagnosisToolActivity" />
+        <activity android:name="com.example.j_pc.selsusapp.DiagnosisActivity" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

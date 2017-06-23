@@ -72,6 +72,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.DocumentBuilder;
@@ -96,6 +97,7 @@ public class GraphResultsActivity extends AppCompatActivity {
     String itemDateStr1;
     String itemDateStr2;
     Double min,max;
+    int mode;
 
     SensorManager mSensorManager;
     @Override
@@ -118,6 +120,7 @@ public class GraphResultsActivity extends AppCompatActivity {
         if (intent != null) {
             sel = intent.getExtras().getIntegerArrayList("selected");
             capture = GraphFragment.capture;
+            mode = intent.getIntExtra("mode",0);
             for(final Integer type : sel){
                 View child = this.getLayoutInflater().inflate(R.layout.graph_card2, null);
                 CardView card = (CardView)child.findViewById(R.id.card_view);
@@ -239,7 +242,8 @@ public class GraphResultsActivity extends AppCompatActivity {
                 toStore.put(type,lst_store);
             }
             try {
-                sendDataSelcomp(toStore.get(1));
+                if(mode==2) sendDataSelcomp(toStore.get(1));
+                else if(mode==1) sendDataCloud(toStore.get(1));
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             } catch (TransformerConfigurationException e) {
@@ -254,6 +258,138 @@ public class GraphResultsActivity extends AppCompatActivity {
         else System.out.println("FAIL!!!!");
     }
 
+    public void sendDataCloud(List<List<DataPoint>> capture) throws ParserConfigurationException, TransformerException {
+        ArrayList<String> str = new ArrayList<>();
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+        // root elements
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElement("measurementdata");
+
+
+        Attr attr3 = doc.createAttribute("xmlns");
+        attr3.setValue("http://selsus.eu/sensorData");
+        rootElement.setAttributeNode(attr3);
+        doc.appendChild(rootElement);
+
+        Element service = doc.createElement("service");
+        rootElement.appendChild(service);
+
+        Element ele_servicetype = doc.createElement("servicetype");
+        ele_servicetype.appendChild(doc.createTextNode("ObservationService"));
+        service.appendChild(ele_servicetype);
+
+        //device_id
+        Element ele_deviceid = doc.createElement("deviceid");
+        ele_deviceid.appendChild(doc.createTextNode("13452"));
+        service.appendChild(ele_deviceid);
+
+        Element cycle = doc.createElement("cycle");
+        service.appendChild(cycle);
+
+        Attr number = doc.createAttribute("number");
+        number.setValue("1");
+        cycle.setAttributeNode(number);
+
+        for (int i = 0; i < capture.get(0).size(); i++) {
+            String var = "{"+ capture.get(0).get(i).getY() +","+capture.get(1).get(i).getY()+","+capture.get(2).get(i).getY()+"}";
+            String time = ""+capture.get(0).get(i).getX();
+
+            Element dataset = doc.createElement("dataset");
+            cycle.appendChild(dataset);
+
+            Element data1 = doc.createElement("data");
+            dataset.appendChild(data1);
+
+            Attr id1 = doc.createAttribute("id");
+            id1.setValue("measurement");
+            data1.setAttributeNode(id1);
+
+            data1.appendChild(doc.createTextNode(var));
+
+            Element data2 = doc.createElement("data");
+            dataset.appendChild(data2);
+
+            Attr id2 = doc.createAttribute("id");
+            id2.setValue("timestamp");
+            data2.setAttributeNode(id2);
+
+            data2.appendChild(doc.createTextNode(time));
+        }
+
+        // write the content into xml string
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        final StringWriter writer = new StringWriter();
+        StreamResult result = new StreamResult(writer);
+        transformer.transform(source, result);
+
+        String selcomp_ip = "192.168.0.101:57681";
+        String service1 = "http://172.30.20.143:5000/systec_panel/service/payload";
+
+        final String body = writer.toString();
+        String ip = getString(R.string.flask_adress);
+        final String url = "http://" + selcomp_ip + "/WebServiceTest.asmx?WSDL/parseRecipe";
+
+
+        System.out.println(writer.toString());
+
+
+
+        // Create the request queue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Create the request object
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, service1,
+                new Response.Listener() {
+
+                    @Override
+                    public void onResponse(Object response) {
+                        System.out.println("RESPONSE: " + response.toString());
+                    }
+
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO handle the error
+                    }
+
+                }
+        ) {
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("payload", writer.toString());
+                return params;
+            };
+
+            @Override
+            public String getBodyContentType() {
+                return "text/xml; charset=" +
+                        getParamsEncoding();
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                String postData = body;
+                try {
+                    return postData == null ? null :
+                            postData.getBytes(getParamsEncoding());
+                } catch (UnsupportedEncodingException uee) {
+                    // TODO consider if some other action should be taken
+                    return null;
+                }
+            }
+
+        };
+
+        // Schedule the request on the queue
+        queue.add(stringRequest);
+    }
 
     public void sendDataSelcomp(List<List<DataPoint>> capture) throws ParserConfigurationException, TransformerException, IOException {
         ArrayList<String> str = new ArrayList<>();
@@ -337,34 +473,17 @@ public class GraphResultsActivity extends AppCompatActivity {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
-        StringWriter writer = new StringWriter();
+        final StringWriter writer = new StringWriter();
         StreamResult result = new StreamResult(writer);
         transformer.transform(source, result);
 
         String selcomp_ip = "192.168.0.101:57681";
+        String service = "http://172.30.20.143:5000/systec_panel/service/recipeAdjustment";
 
         final String body = writer.toString();
         String ip = getString(R.string.flask_adress);
         final String url = "http://" + selcomp_ip + "/WebServiceTest.asmx?WSDL/parseRecipe";
-        String sFileName= "C:\\Users\\J-PC\\Desktop\\test";
 
-        try
-        {
-            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-            if (!root.exists()) {
-                root.mkdirs();
-            }
-            File gpxfile = new File(root, sFileName);
-            FileWriter writer1 = new FileWriter(gpxfile);
-            writer1.append(writer.toString());
-            writer1.flush();
-            writer1.close();
-            Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
 
         System.out.println(writer.toString());
 
@@ -374,7 +493,7 @@ public class GraphResultsActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         // Create the request object
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, service,
                 new Response.Listener() {
 
                     @Override
@@ -392,6 +511,12 @@ public class GraphResultsActivity extends AppCompatActivity {
 
                 }
         ) {
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("recipe", writer.toString());
+                return params;
+            };
 
             @Override
             public String getBodyContentType() {
@@ -417,46 +542,6 @@ public class GraphResultsActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-
-
-    /*private class sendXML extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected String doInBackground(String... params) {
-            HttpURLConnection conn = null;
-            URL obj = null;
-            String body = null;
-            try {
-                obj = new URL(params[0]);
-                conn = (HttpURLConnection) obj.openConnection();
-                conn.setReadTimeout(10000);
-                conn.setConnectTimeout(15000);
-                conn.setRequestMethod("POST");
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-                body = params[1];
-                OutputStream output = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(output, "UTF-8"));
-                writer.write(body);
-                writer.flush();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            finally {
-                conn.disconnect();
-            }
-            System.out.println(body);
-            return body;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
-    }*/
 
     public void commentListener() {
             for(final Integer type : sel){

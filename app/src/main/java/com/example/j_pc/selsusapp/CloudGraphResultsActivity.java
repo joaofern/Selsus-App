@@ -108,7 +108,9 @@ public class CloudGraphResultsActivity extends AppCompatActivity {
                         int trick = 1;
                         String initial_date = "";
                         String final_date = "";
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:s");
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+                        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-DD HH:mm:sss");
                         int aux = 0;
                         while( keys.hasNext() ) {
 

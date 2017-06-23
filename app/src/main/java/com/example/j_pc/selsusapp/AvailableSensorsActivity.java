@@ -47,6 +47,7 @@ public class AvailableSensorsActivity extends AppCompatActivity {
 //    ArrayList<String> sel_names = new ArrayList<>();
     String sel_name;
     int sel_id;
+    int mode;
 
     HashMap<Integer,String> sensor_names = new HashMap<>();
 
@@ -61,6 +62,7 @@ public class AvailableSensorsActivity extends AppCompatActivity {
 
         LinearLayout linear = (LinearLayout) findViewById(R.id.linear);
         final Intent intent = getIntent();
+        mode = intent.getIntExtra("mode",0);
 
         try {
             JSONObject selcomp = new JSONObject(intent.getStringExtra("selcomp"));
@@ -82,32 +84,59 @@ public class AvailableSensorsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        System.out.println("OLOAAOLAOLA");
+        System.out.println("MODE: "+mode);
         final Button button = (Button) findViewById(R.id.next);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent next = new Intent(getApplicationContext(), CloudRequestGraphActivity.class);
-                selected.clear();
-                for (int id : sensorIDs) {
-                    if (((CheckBox) findViewById(id)).isChecked()){
-                        selected.add(id);
-                        sel_name = sensor_names.get(id);
-                        sel_id = id;
+        if (mode == 4) {
 
-
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent next = new Intent(getApplicationContext(), CloudRequestGraphActivity.class);
+                    selected.clear();
+                    for (int id : sensorIDs) {
+                        if (((CheckBox) findViewById(id)).isChecked()) {
+                            selected.add(id);
+                            sel_name = sensor_names.get(id);
+                            sel_id = id;
+                        }
                     }
-
+                    next.putExtra("selected", selected);
+                    next.putExtra("selcomp", intent.getStringExtra("selcomp"));
+                    next.putExtra("mode", intent.getStringExtra("mode"));
+                    System.out.println(sel_name);
+                    next.putExtra("sel_name", sel_name);
+                    System.out.println("sel_id" + sel_id);
+                    next.putExtra("sel_id", sel_id);
+                    startActivity(next);
                 }
-                next.putExtra("selected", selected);
-                next.putExtra("selcomp",intent.getStringExtra("selcomp"));
-                next.putExtra("mode",intent.getStringExtra("mode"));
-                System.out.println(sel_name);
-                next.putExtra("sel_name",sel_name);
-                System.out.println("sel_id"+sel_id);
-                next.putExtra("sel_id",sel_id);
-                startActivity(next);
+            });
+        }
+            else if(mode == 3){
+
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent next = new Intent(getApplicationContext(), MQTTClientActivity.class);
+                    selected.clear();
+                    for (int id : sensorIDs) {
+                        if (((CheckBox) findViewById(id)).isChecked()) {
+                            selected.add(id);
+                            sel_name = sensor_names.get(id);
+                            sel_id = id;
+
+                        }
+                    }
+                    next.putExtra("selected", selected);
+                    next.putExtra("selcomp", intent.getStringExtra("selcomp"));
+                    next.putExtra("mode", intent.getIntExtra("mode",0));
+                    next.putExtra("sel_name", sel_name);
+                    next.putExtra("sel_id", sel_id);
+                    startActivity(next);
+                }
+            });
             }
-        });
+
+
+
 
     }
 

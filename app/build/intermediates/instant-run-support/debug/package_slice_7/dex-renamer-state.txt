@@ -1,4 +1,4 @@
-#Fri Jun 23 00:14:52 BST 2017
+#Fri Jun 23 15:51:58 BST 2017
 base.0=E\:\\eskto\\SelSusApp\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_7
 renamed.0=classes.dex
 file.0=E\:\\eskto\\SelSusApp\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_7\\classes.dex
